@@ -8,7 +8,7 @@ contacts = [
     {
         name: "Martijn",
         phone: "1233456",
-        email: "foo@bar.com"
+        email: "foo@gmail.com"
     },
     {
         name: "Martinus",
@@ -48,7 +48,7 @@ app.post('/contacts', function(req, res) {
  
     var newContact = {
         name : req.body.name,
-        phone : req.body.phone,
+        phone : (req.body.phone ? req.body.phone : ''),
         email: req.body.email
     };
    
