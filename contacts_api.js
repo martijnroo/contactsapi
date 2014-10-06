@@ -48,11 +48,48 @@ app.get('/contacts/:id', function(req, res) {
         if(err) {
             res.statusCode = 500;
             res.send("There was a problem retrieving information from the database.");
+        } else if(doc == null) {
+            res.statusCode = 404;
+            res.send("No contact with given ID found.");
         } else {
             res.json(doc);
         }
     });
 });
+
+
+// PUT
+// Updates one contact
+app.put('/contacts/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('contacts');
+
+    var id = req.params.id
+
+    var newContactInfo = {};
+    if(req.body.name) {
+        newContactInfo.name = req.body.name;
+    }
+    if(req.body.phone) {
+        newContactInfo.phone = req.body.phone;
+    }
+    if(req.body.email) {
+        newContactInfo.email = req.body.email;
+    }
+
+    collection.update({_id: id}, {$set: newContactInfo}, function(err, doc) {
+        if(err) {
+            res.statusCode = 500;
+            res.send("There was a problem updating information in the database.");
+        } else if(doc == 0) {
+            res.statusCode = 404;
+            res.send("Contact with given ID not found.");
+        } else {
+            res.json({nr_contacts_updated: doc});
+        }
+    });
+});
+
 
 
 // POST
@@ -79,6 +116,7 @@ app.post('/contacts', function(req, res) {
             res.send("There was a problem adding the information to the database.");
         }
         else {
+            res.statusCode = 201;
             res.json({id: doc._id});
         }
     });
@@ -131,5 +169,5 @@ app.delete('/contacts/:id', function(req, res) {
 
 
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 8000);
 
