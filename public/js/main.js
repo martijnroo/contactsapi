@@ -25,9 +25,12 @@ function displayContacts(parent, contacts) {
         // for(property in contacts[i]) {
 
         // }
-        $(parent).append('<li>'+contacts[i].name+'</li>');
-
+        $(parent).append('<button id='+contacts[i]._id+'>'+contacts[i].name+'</button></br>');
     };
+    $('button').click(function(){
+        console.log(this.id);
+        
+    });
 }
 
 function displayContact(parent) {
