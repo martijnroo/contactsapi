@@ -13,13 +13,6 @@ app.use(function(req,res,next){
 app.use(express.bodyParser());
 
 
-
-app.all('/', function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "X-Requested-With");
-	next();
- });
-
 //GET
 //Gets contacts, possibly filtered by name, phone and/or email
 app.get('/contacts', function(req, res) {
