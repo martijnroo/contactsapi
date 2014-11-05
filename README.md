@@ -35,3 +35,13 @@ Create a contact by posting the contact's attributes to `/contacts`. The name is
 Contacts can be deleted by in batch at `/contacts` using the same filtering as with GET. All matching contacts are deleted and the number of deleted contacts is returned.
 
 A contact can also be deleted by its ID using `/contacts/[contact_id]`. Here too, the number of deleted contacts is returned.
+
+
+# Contacts Front-End
+A front-end website for the contacts API.
+
+## Set up
+Run the API and the front-end web server as one nodejs/Express.js app by using the command `node contacts_api.js` from the main directory (there where the `contacts_api.js` file is located).
+
+## Use
+The default view is a list of contacts. Clicking on a contact reveals its full details. These can be edited and saved, the contact can be deleted or the user can return to the main list.
