@@ -1,6 +1,6 @@
 $(document).ready(function() {
     retrieve('contacts', displayContacts);
-});
+}); 
 
 function displayContacts(contacts) {
     var parent = '.all_contacts';
@@ -31,7 +31,7 @@ function displayContact(contact) {
 
 function retrieve(request, success_function) {
     $.ajax({
-        url: "http://localhost:8080/"+request,
+        url: "http://localhost:8081/"+request,
         type: 'get',
         cache: false,
         async: true,
@@ -48,7 +48,7 @@ function retrieve(request, success_function) {
 
 function delete_contact(contact_id) {
     $.ajax({
-        url: "http://localhost:8080/contacts/"+contact_id,
+        url: "http://localhost:8081/contacts/"+contact_id,
         type: 'DELETE',
         cache: false,
         async: true,
