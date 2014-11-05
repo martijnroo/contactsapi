@@ -1,4 +1,4 @@
-var clientId = '550013882256-r0b0uufhe82klh5d2a2tgf37bhmi4s0j.apps.googleusercontent.com';
+var clientId = '550013882256-q04gtqu6tkdub380cuaj6r6j0c4mespj.apps.googleusercontent.com';
 var apiKey = 'AIzaSyA2CvsroFnZ1p2eLCMwkHlD-9mX9syDFoQ';
 var scopes = 'https://www.google.com/m8/feeds';
 
