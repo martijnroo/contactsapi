@@ -9,7 +9,7 @@ $(document).on("click",".js-google_contacts", function(){
 
 function auth() {
 	var config = {
-		'client_id': 'OAUTH_CLIENT_ID',
+		'client_id': clientId,
 		'scope': 'https://www.google.com/m8/feeds'
 	};
 	gapi.auth.authorize(config, function() {
