@@ -3,7 +3,7 @@ var app = express();
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('mongo.billos.fr:27017/mydb');
+var db = monk('localhost:27017/mydb');
 
 app.use(function(req,res,next){
 	req.db = db;
