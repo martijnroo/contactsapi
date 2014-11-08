@@ -2,7 +2,7 @@ $(document).ready(function() {
     
     
     $('.js-google_contacts').click(function(){
-		gapiLoad();
+		alert('plop');
 	});
     
 }); 
