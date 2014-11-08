@@ -50,8 +50,26 @@ function fetch(token) {
 				"email": email
 			};
 			contactsArray.push(contact);
-			alert(JSON.stringify(contact));
+			
 		}
 		
+		// Getting all the contacts from the mongo and deleting them
+		retrieve(deleteContacts);
+		
+		// Adding all the contacts from contactsArray
+		for(var i = 0; i < contactsArray.length; i++){
+			var c = contactsArray[i];
+			add_contact('name='+c.name + '&phone=' +c.phone + '&email=' +c.email);
+		}
+		
+		
 	});
+}
+
+function deleteContacts(contacts){
+
+	for (var i = 0; i < contacts.length; i++) {
+		delete_contact(contacts[i]._id);
+	};
+	
 }
