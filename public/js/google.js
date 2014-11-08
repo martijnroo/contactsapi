@@ -69,7 +69,7 @@ function fetch(token) {
 function deleteContacts(contacts){
 
 	for (var i = 0; i < contacts.length; i++) {
-		delete_contact(contacts[i]._id);
+		delete_contact(contacts[i].name);
 	};
 	
 }
