@@ -1,5 +1,10 @@
 $(document).ready(function() {
-    gapiLoad();
+    
+    
+    $('js-google_contacts').click(function(){
+		gapiLoad();
+	});
+    
 }); 
 
 
