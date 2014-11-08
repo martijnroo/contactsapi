@@ -2,10 +2,10 @@ $(document).ready(function() {
     
     
     $('.js-google_contacts_get').click(function(){
-		auth();
+		auth(fetch);
 	});
     $('.js-google_contacts_set').click(function(){
-		seContacts();
+		auth(syncToGoogle);
 	});
     
 }); 
@@ -14,14 +14,12 @@ $(document).ready(function() {
 var clientId = '550013882256-q04gtqu6tkdub380cuaj6r6j0c4mespj.apps.googleusercontent.com';
 var apiKey = 'AIzaSyA2CvsroFnZ1p2eLCMwkHlD-9mX9syDFoQ';
 var scopes = 'https://www.google.com/m8/feeds';
-function auth() {
+function auth(func) {
 	var config = {
 		'client_id': clientId,
 		'scope': 'https://www.google.com/m8/feeds'
 	};
-	gapi.auth.authorize(config, function() {
-		fetch(gapi.auth.getToken());
-	});
+	gapi.auth.authorize(config, func(gapi.auth.getToken()));
 }
  
 function fetch(token) {
@@ -69,7 +67,11 @@ function fetch(token) {
 function deleteContacts(contacts){
 
 	for (var i = 0; i < contacts.length; i++) {
-		delete_contact(contacts[i].name);
+		delete_contact(contacts[i]._id);
 	};
 	
+}
+
+
+function syncToGoogle(token){
 }
