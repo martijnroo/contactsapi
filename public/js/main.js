@@ -2,6 +2,8 @@ $(document).ready(function() {
     retrieve('contacts', displayContacts);
 }); 
 
+var host = "5.135.183.173";
+
 function displayNewContactForm() {
     var parent = '.all_contacts';
     $(parent).html('<form id="new_contact"></form>');
@@ -50,7 +52,7 @@ function displayContact(contact) {
 
 function retrieve(request, success_function) {
     $.ajax({
-        url: "http://localhost:8080/"+request,
+        url: "http://"+host+":8080/"+request,
         type: 'get',
         cache: false,
         async: true,
@@ -67,7 +69,7 @@ function retrieve(request, success_function) {
 
 function delete_contact(contact_id) {
     $.ajax({
-        url: "http://localhost:8080/contacts/"+contact_id,
+        url: "http://"+host+":8080/contacts/"+contact_id,
         type: 'DELETE',
         cache: false,
         async: true,
@@ -84,7 +86,7 @@ function delete_contact(contact_id) {
 
 function add_contact(data) {
     $.ajax({
-        url: "http://localhost:8080/contacts/",
+        url: "http://"+host+":8080/contacts/",
         type: 'POST',
         data: data,
         cache: false,
