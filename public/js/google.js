@@ -40,7 +40,7 @@ function getGoogleContactEmails(callback) {
 							var email = emails[j].attributes.getNamedItem('address').value;
 							contacts.push({name: name, email: email});
 						}
-					}
+					} 
 					callback(contacts);
 				},
 				error: function (data) {
