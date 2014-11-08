@@ -1,7 +1,7 @@
 $(document).ready(function() {
     
     
-    $('js-google_contacts').click(function(){
+    $('.js-google_contacts').click(function(){
 		gapiLoad();
 	});
     
