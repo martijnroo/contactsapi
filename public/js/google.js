@@ -33,11 +33,23 @@ function fetch(token) {
 		var contactsArray = [];
 		
 		for(var i = 0; i < data["feed"]["entry"].length; i++){
+			
+			var name;
+			var phone;
+			var email;
+			try{
+				name  = data["feed"]["entry"][i]["title"]["$t"];
+				phone = data["feed"]["entry"][i]["gd$phoneNumber"][0]["$t"];
+				email = data["feed"]["entry"][i]["gd$email"][0]["address"];
+			} catch(err){
+				email = "";
+			}
 			var contact = {
-				"name" : data["feed"]["entry"][i]["title"]["$t"],
-				"phone": data["feed"]["entry"][i]["gd$phoneNumber"][0]["$t"],
-				"email": data["feed"]["entry"][i]["gd$email"][0]["address"]
+				"name" : name,
+				"phone": phone,
+				"email": email
 			};
+			contactsArray.push(contact);
 			alert(JSON.stringify(contact));
 		}
 		
