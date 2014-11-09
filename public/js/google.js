@@ -101,7 +101,7 @@ function syncToGoogle(token) {
 function deleteGoogleContact(token, id){
 	$.ajax({
 		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id,
-        type: {'action':'DELETE'},
+        type: 'DELETE',
         cache: false,
         async: true,
         success: function(response) {
