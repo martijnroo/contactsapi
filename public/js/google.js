@@ -76,4 +76,18 @@ function deleteContacts(contacts){
 
 
 function syncToGoogle(token){
+	// Getting the google contacts
+	$.ajax({
+		url: 'https://www.google.com/m8/feeds/contacts/default/full?alt=json',
+		dataType: 'jsonp',
+		data: token
+	}).done(function(data) {
+		console.log(JSON.stringify(data));
+	}
+	
+	// emptying the google contacts
+	
+	// Saving the contacts from mongo
+	
+	
 }
