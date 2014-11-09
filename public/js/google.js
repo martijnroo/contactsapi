@@ -11,8 +11,7 @@ $(document).ready(function() {
 }); 
 
 
-var clientId = '550013882256-q04gtqu6tkdub380cuaj6r6j0c4mespj.apps.googleusercontent.com';
-var apiKey = 'AIzaSyA2CvsroFnZ1p2eLCMwkHlD-9mX9syDFoQ';
+var clientId = '834560503457-3j727nfs1hs0k91f2vbf0tuhb9dpqg71.apps.googleusercontent.com';
 var scopes = 'https://www.google.com/m8/feeds';
 function auth(func) {
 	var config = {
