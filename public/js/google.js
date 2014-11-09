@@ -103,6 +103,7 @@ function deleteGoogleContact(token, id){
 		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id+'?alt=json',
 		type: {'action' : 'delete'},
 		dataType: 'jsonp',
+		method: 'DELETE',
 		data: token
 	}).done(function(data2) {
 		console.log(JSON.stringify(data2));
