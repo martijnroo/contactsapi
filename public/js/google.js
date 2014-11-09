@@ -53,7 +53,7 @@ function fetch(token) {
 		}
 		
 		// Getting all the contacts from the mongo and deleting them
-		retrieve(deleteContacts);
+		retrieve('contacts', deleteContacts);
 		
 		// Adding all the contacts from contactsArray
 		for(var i = 0; i < contactsArray.length; i++){
