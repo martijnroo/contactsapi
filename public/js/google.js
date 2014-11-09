@@ -83,15 +83,30 @@ function syncToGoogle(token) {
 		data: token
 	}).done(function(data) {
 		
+		// Emptying the google contacts
 		for(var i = 0; i < data["feed"]["entry"].length; i++){
 			// Getting the id
 			var idStr  = data["feed"]["entry"][i]["id"]["$t"];
 			var array = idStr.split("/");
 			var id = array[array.length-1];
 			
-			alert(id);
-			// Deleting this
+			// Deleting this contact
+			deleteGoogleContact(token, id);
 		}
+		// Saving the contacts from mongodb
 		
 	});
 }
+
+function deleteGoogleContact(token, id){
+	$.ajax({
+		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id,
+		type: 'DELETE',
+		dataType: 'jsonp',
+		data: token
+	}).done(function(data) {
+		console.log(data);
+		console.log(JSON.stringify(data));
+	});
+}
+
