@@ -104,7 +104,6 @@ function deleteGoogleContact(token, id){
         type: 'DELETE',
         cache: false,
         async: true,
-        data: token,
         success: function(response) {
 			console.log(JSON.stringify(data2));
 			console.log(data2);
