@@ -76,12 +76,22 @@ function deleteContacts(contacts){
 
 
 function syncToGoogle(token) {
+	// Getting each google contacts
 	$.ajax({
 		url: 'https://www.google.com/m8/feeds/contacts/default/full?alt=json',
 		dataType: 'jsonp',
 		data: token
 	}).done(function(data) {
-		console.log(JSON.stringify(data));
+		
+		for(var i = 0; i < data["feed"]["entry"].length; i++){
+			// Getting the id
+			var idStr  = data["feed"]["entry"][i]["id"]["$t"];
+			var array = str.split("/");
+			var id = array[array.length-1];
+			
+			alert(id);
+			// Deleting this
+		}
 		
 	});
 }
