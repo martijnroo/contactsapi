@@ -11,7 +11,7 @@ $(document).ready(function() {
 }); 
 
 
-var clientId = '847876511602-7fg7p1h43h8vmnmg3a8jisfv6hn4fn11.apps.googleusercontent.com';
+var clientId = '550013882256-q04gtqu6tkdub380cuaj6r6j0c4mespj.apps.googleusercontent.com';
 var apiKey = 'AIzaSyA2CvsroFnZ1p2eLCMwkHlD-9mX9syDFoQ';
 var scopes = 'https://www.google.com/m8/feeds';
 function auth(func) {
@@ -47,13 +47,12 @@ function fetch(token) {
 				"phone": phone,
 				"email": email
 			};
-			if(contact.name != ""){
-				contactsArray.push(contact);
-			}
+			contactsArray.push(contact);
+			
 		}
 		
 		// Getting all the contacts from the mongo and deleting them
-		retrieve('contacts', deleteContacts);
+		retrieve(deleteContacts);
 		
 		// Adding all the contacts from contactsArray
 		for(var i = 0; i < contactsArray.length; i++){
