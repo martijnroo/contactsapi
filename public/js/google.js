@@ -47,8 +47,9 @@ function fetch(token) {
 				"phone": phone,
 				"email": email
 			};
-			contactsArray.push(contact);
-			
+			if(contact.name != ""){
+				contactsArray.push(contact);
+			}
 		}
 		
 		// Getting all the contacts from the mongo and deleting them
