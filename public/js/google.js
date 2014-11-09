@@ -99,6 +99,9 @@ function syncToGoogle(token) {
 }
 
 function deleteGoogleContact(token, id){
+
+	
+	/*
 	gapi.auth.setToken(token);
 	var req = gapi.client.request({method:'DELETE',path:'/m8/feeds/contacts/default/full/'+id});
 	gapi.client.HttpRequest.execute(req);
