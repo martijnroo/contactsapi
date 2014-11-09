@@ -2,7 +2,7 @@ $(document).ready(function() {
     retrieve('contacts', displayContacts);
 }); 
 
-var host = "5.135.183.173";
+var host = "localhost";
 
 function displayNewContactForm() {
     var parent = '.all_contacts';
