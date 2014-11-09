@@ -99,12 +99,20 @@ function syncToGoogle(token) {
 }
 
 function deleteGoogleContact(token, id){
+	
+	gapi.client.request({method:'DELETE',url:'/m8/feeds/contacts/default/full/'+id});
+	/*
 	$.ajax({
 		//url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id+'?'+$.param(token),
-		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id+'?client_id='+JSON.stringify(token),
+		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id+'?access_toke='+token.client_id,
         type: 'DELETE',
         cache: false,
         async: true,
+		headers: {
+			'If-Match': '*',
+			'Gdata-version': '3.0'
+        },
+        dataType: 'jsonp',
         success: function(response) {
 			console.log(JSON.stringify(data2));
 			console.log(data2);
@@ -112,5 +120,6 @@ function deleteGoogleContact(token, id){
         fail: function(response) {
         }
 	});
+	* //*/
 }
 
