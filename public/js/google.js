@@ -11,11 +11,12 @@ $(document).ready(function() {
 }); 
 
 
-var clientId = '834560503457-3j727nfs1hs0k91f2vbf0tuhb9dpqg71.apps.googleusercontent.com';
-var scopes = 'https://www.google.com/m8/feeds';
+
+
+
 function auth(func) {
 	var config = {
-		'client_id': clientId,
+		'client_id': '834560503457-3j727nfs1hs0k91f2vbf0tuhb9dpqg71.apps.googleusercontent.com',
 		'scope': 'https://www.google.com/m8/feeds'
 	};
 	gapi.auth.authorize(config, func(gapi.auth.getToken()));
@@ -27,6 +28,9 @@ function fetch(token) {
 		dataType: 'jsonp',
 		data: token
 	}).done(function(data) {
+		
+		console.log(JSON.stringify(data));
+		/*
 		var contactsArray = [];
 		
 		for(var i = 0; i < data["feed"]["entry"].length; i++){
@@ -58,7 +62,7 @@ function fetch(token) {
 			var c = contactsArray[i];
 			add_contact('name='+c.name + '&phone=' +c.phone + '&email=' +c.email);
 		}
-		
+		//*/
 		
 	});
 }
