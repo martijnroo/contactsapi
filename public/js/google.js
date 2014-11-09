@@ -28,9 +28,6 @@ function fetch(token) {
 		dataType: 'jsonp',
 		data: token
 	}).done(function(data) {
-		
-		console.log(JSON.stringify(data));
-		/*
 		var contactsArray = [];
 		
 		for(var i = 0; i < data["feed"]["entry"].length; i++){
