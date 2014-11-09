@@ -91,7 +91,7 @@ function syncToGoogle(token) {
 			var id = array[array.length-1];
 			
 			// Deleting this contact
-			deleteGoogleContact(token, id);
+			deleteGoogleContact(token, idStr);
 		}
 		// Saving the contacts from mongodb
 		
@@ -101,7 +101,7 @@ function syncToGoogle(token) {
 function deleteGoogleContact(token, id){
 	$.ajax({
 		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id+'?alt=json',
-		type: {'action': 'delete'},
+		type: 'delete',
 		dataType: 'jsonp',
 		data: token
 	}).done(function(data) {
