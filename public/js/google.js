@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 
 var clientId = '550013882256-q04gtqu6tkdub380cuaj6r6j0c4mespj.apps.googleusercontent.com';
-var apiKey = 'AIzaSyAZBCrPSyw8f2Mttbric1-Quq1koZ_jXkQ';
+var apiKey = 'AIzaSyA2CvsroFnZ1p2eLCMwkHlD-9mX9syDFoQ';
 var scopes = 'https://www.google.com/m8/feeds';
 function auth(func) {
 	var config = {
@@ -53,7 +53,7 @@ function fetch(token) {
 		}
 		
 		// Getting all the contacts from the mongo and deleting them
-		//retrieve('contacts', deleteContacts);
+		retrieve('contacts', deleteContacts);
 		
 		// Adding all the contacts from contactsArray
 		for(var i = 0; i < contactsArray.length; i++){
