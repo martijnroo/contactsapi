@@ -103,70 +103,20 @@ function syncToGoogle(token) {
 	});
 }
 
-function authSaveGoogle(contacts) {
-
-}
-
 function saveToGoogle(contacts) {
 	for (var i = 0; i < contacts.length; i++) {
-		var xmlString = "<atom:entry xmlns:atom='http://www.w3.org/2005/Atom'\
-		    xmlns:gd='http://schemas.google.com/g/2005'>\
-		  <atom:category scheme='http://schemas.google.com/g/2005#kind'\
-		    term='http://schemas.google.com/contact/2008#contact'/>\
+		var xmlString = "\
+		<entry xmlns='http://www.w3.org/2005/Atom' xmlns:gd='http://schemas.google.com/g/2005'>\
 		  <gd:name>\
-		     <gd:fullName>"+contacts[i].name+"</gd:fullName>\
+		    <gd:fullName>"+contacts[i].name+"</gd:fullName>\
 		  </gd:name>\
-		  <atom:content type='text'>Notes</atom:content>\
-		  <gd:email rel='http://schemas.google.com/g/2005#work'\
-		    primary='true'\
-		    address='liz@gmail.com' displayName='E. Bennet'/>\
 		  <gd:email rel='http://schemas.google.com/g/2005#home'\
-		    address='liz@example.org'/>\
+		    address='"+contacts[i].email+"'/>\
 		  <gd:phoneNumber rel='http://schemas.google.com/g/2005#work'\
 		    primary='true'>\
-		    (206)555-1212\
+		    "+contacts[i].phone+"\
 		  </gd:phoneNumber>\
-		  <gd:phoneNumber rel='http://schemas.google.com/g/2005#home'>\
-		    (206)555-1213\
-		  </gd:phoneNumber>\
-		  <gd:im address='liz@gmail.com'\
-		    protocol='http://schemas.google.com/g/2005#GOOGLE_TALK'\
-		    primary='true'\
-		    rel='http://schemas.google.com/g/2005#home'/>\
-		  <gd:structuredPostalAddress\
-		      rel='http://schemas.google.com/g/2005#work'\
-		      primary='true'>\
-		    <gd:city>Mountain View</gd:city>\
-		    <gd:street>1600 Amphitheatre Pkwy</gd:street>\
-		    <gd:region>CA</gd:region>\
-		    <gd:postcode>94043</gd:postcode>\
-		    <gd:country>United States</gd:country>\
-		    <gd:formattedAddress>\
-		      1600 Amphitheatre Pkwy Mountain View\
-		    </gd:formattedAddress>\
-		  </gd:structuredPostalAddress>\
-		</atom:entry>";
-
-
-
-		// <entry xmlns='http://www.w3.org/2005/Atom' xmlns:gd='http://schemas.google.com/g/2005'>\
-		//   <gd:name>\
-		//     <gd:fullName>First Last</gd:fullName>\
-		//   </gd:name>\
-		//   <gd:structuredPostalAddress rel='http://schemas.google.com/g/2005#work' primary='true'>\
-		//     <gd:formattedAddress>1600 Amphitheatre Pkwy Mountain View, CA 94043 United States</gd:formattedAddress>\
-		//   </gd:structuredPostalAddress>\
-		// </entry>";
-
-		// <?xml version='1.0' encoding='utf-8'?>\
-		// <entry xmlns='http://www.w3.org/2005/Atom'>\
-		//   <author>\
-		//     <name>Elizabeth Bennet</name>\
-		//     <email>liz@gmail.com</email>\
-		//   </author>\
-		//   <title type='text'>Entry 1</title>\
-		//   <content type='text'>This is my entry</content>\
-		// </entry>";
+		</entry>";
 
 		$.ajax({
 			url: 'https://www.google.com/m8/feeds/contacts/default/full/',
@@ -182,7 +132,6 @@ function saveToGoogle(contacts) {
 				'Authorization': 'Bearer ' + token.access_token
 			},
 			success: function(response) {
-				console.log(response);
 			},
 			fail: function(response) {
 			},
@@ -195,29 +144,18 @@ function saveToGoogle(contacts) {
 
 function deleteGoogleContact(token, id){
 
-	// gapi.auth.setToken(token);
-	// var req = gapi.client.request({method:'DELETE',path:'/m8/feeds/contacts/default/full/'+id+'?access_token='+token.access_token});
-	// gapi.client.HttpRequest.execute(req);
-	
 	$.ajax({
-		//url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id+'?'+$.param(token),
 		url: 'https://www.google.com/m8/feeds/contacts/default/full/'+id,
 		type: 'DELETE',
 		cache: false,
-		async: true,
+		async: false,
 		crossDomain: true,
-		// beforeSend: function (xhr) {
-		//     xhr.setRequestHeader('Authorization', 'Bearer 1/'+token.access_token);
-		// },
-		// dataType: 'jsonp',
 		headers: {
 			'If-Match': '*',
 			'Gdata-version': '3.0',
-			// 'X-HTTP-Method-Override': 'DELETE',
 			'Authorization': 'Bearer ' + token.access_token
 		},
 		success: function(response) {
-			console.log(response);
 		},
 		fail: function(response) {
 		},

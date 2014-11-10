@@ -115,36 +115,36 @@ app.put('/contacts/:id', function(req, res) {
 //POST
 //Adds one contact, name is mandatory
 app.post('/contacts', function(req, res) {
-	
-	// Checking that there is the mandatory parameter
-	if(!req.body.hasOwnProperty('name')) {
-		res.statusCode = 400;
-		return res.send('Error 400: Name attribute missing.');
-	} 
+    
+    // Checking that there is the mandatory parameter
+    if(!req.body.hasOwnProperty('name')) {
+        res.statusCode = 400;
+        return res.send('Error 400: Name attribute missing.');
+    } 
 
-	// Getting the database connection
-	var db = req.db;
-	var collection = db.get('contacts');
+    // Getting the database connection
+    var db = req.db;
+    var collection = db.get('contacts');
 
-	// Creating a new contact 
-	var newContact = {
-			name : (req.body.name ? req.body.name : ''),
-			phone : (req.body.phone ? req.body.phone : ''),
-			email: (req.body.email ? req.body.email : '')
-	};
-	
-	// Inserting the new contact in the database
-	collection.insert(newContact, function (err, doc) {
-		if (err) {
-			// If insert failed, return error
-			res.statusCode = 500;
-			res.send("There was a problem adding the information to the database."+err+doc);
-		}
-		else {
-			res.statusCode = 201;
-			res.json({id: doc._id});
-		}
-	});
+    // Creating a new contact 
+    var newContact = {
+            name : (req.body.name ? req.body.name : ''),
+            phone : (req.body.phone ? req.body.phone : ''),
+            email: (req.body.email ? req.body.email : '')
+    };
+    
+    // Inserting the new contact in the database
+    collection.insert(newContact, function (err, doc) {
+        if (err) {
+            // If insert failed, return error
+            res.statusCode = 500;
+            res.send("There was a problem adding the information to the database."+err+doc);
+        }
+        else {
+            res.statusCode = 201;
+            res.json({id: doc._id});
+        }
+    });
 });
 
 
