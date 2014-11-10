@@ -113,9 +113,7 @@ function saveToGoogle(contacts) {
 		  <gd:email rel='http://schemas.google.com/g/2005#home'\
 		    address='"+contacts[i].email+"'/>\
 		  <gd:phoneNumber rel='http://schemas.google.com/g/2005#work'\
-		    primary='true'>\
-		    "+contacts[i].phone+"\
-		  </gd:phoneNumber>\
+		    primary='true'>"+contacts[i].phone+"</gd:phoneNumber>\
 		</entry>";
 
 		$.ajax({

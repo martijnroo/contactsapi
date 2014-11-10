@@ -2,7 +2,7 @@ $(document).ready(function() {
     retrieve('contacts', displayContacts);
 }); 
 
-var host = "localhost";
+var host = "cloudguest114.niksula.hut.fi";
 
 function displayNewContactForm() {
     var parent = '.all_contacts';
